@@ -7,6 +7,12 @@
 5. [MY JOURNEY](#journey)
 ## OBJECTIVES <a name="objective"></a>
 ## PREREQUISITES <a name="prequisites"></a>
+  - [ ] Vite
+  - [ ] PSQL
+  - [ ] Tailwind
+  - [ ] HTML
+  - [ ] CSS
+  - [ ] JavaScript
 ## DEMO <a name="demo"></a>
 ## HOW TO RUN THIS PROJECT <a name="run"></a>
 1. Clonet this project by using    
@@ -51,3 +57,10 @@ image
   - Update an existing game.  
 - DELETE 
   - Delete a game. 
+
+SPIKE DOC:
+- find out how to store images
+  - from api
+  - local storage
+  - web scraping
+  
