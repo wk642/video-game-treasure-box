@@ -9,7 +9,7 @@
 ## PREREQUISITES <a name="prequisites"></a>
   - [ ] Vite
   - [ ] PSQL
-  - [ ] Tailwind
+  - [ ] [Tailwind](https://tailwindcss.com/docs/installation/using-vite)
   - [ ] HTML
   - [ ] CSS
   - [ ] JavaScript
@@ -19,6 +19,12 @@
 ` git clone https://github.com/wk642/video-game-treasure-box.git`
 2. Open up the project and then install npm  
 ` npm install `
+3. To run this project concurrently:  
+` npm run dev `
+To run just the front end:
+` npm run client `
+To  run just the back end:
+` npm run server `
 ## MY JOURNEY <a name="journey"></a>
 This project was originally EVENTONICA, which was going to diaplying, adding, updating, deleting events. Instead I have a passion for video games, so I decided to put a little twist on it. 
 
@@ -28,7 +34,7 @@ This project was originally EVENTONICA, which was going to diaplying, adding, up
 - GameList.js - displays the games
 - GameCard.js - display each game
 - GameDetails.js - display the details of the games
-- GameForm.js - form to allow user to add
+- AddGameForm.js - form to allow user to add
 - SearchBar.js - search functionality.
 - Filter.js - to filter games by genre, name, or  year, or favorited (maybe goes with search bar).
 
