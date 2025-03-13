@@ -15,16 +15,27 @@
   - [ ] JavaScript
 ## DEMO <a name="demo"></a>
 ## HOW TO RUN THIS PROJECT <a name="run"></a>
+`npm install express cors pg tailwinds`
 1. Clonet this project by using    
 ` git clone https://github.com/wk642/video-game-treasure-box.git`
 2. Open up the project and then install npm  
 ` npm install `
 3. To run this project concurrently:  
 ` npm run dev `
+If you onlly run npm run dev, there will be no games initally in your database. To add a couple of games with my template use 
+` npm run seed ` (This step should I only be used when initiallizing the app or when there is none in there and you want to add something. Or else you will get the repeated five games over and over again)
 To run just the front end:
 ` npm run client `
 To  run just the back end:
 ` npm run server `
+## INSTALLING LOCAL DATABASE
+In terminal, create database
+` CREATE DATABASE videogametreasureboxdb;`
+Create a user
+``` 
+CREATE USER videogametreasurebox WITH PASSWORD 'videogames';
+GRANT ALL PRIVILEGES ON DATABASE videogametreasureboxdb TO videogametreasurebox;
+```
 ## MY JOURNEY <a name="journey"></a>
 This project was originally EVENTONICA, which was going to diaplying, adding, updating, deleting events. Instead I have a passion for video games, so I decided to put a little twist on it. 
 
