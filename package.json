@@ -9,7 +9,8 @@
     "dev": "concurrently \"npm run client\" \"npm run server\"",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seed": "node data/seed.js"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.2",

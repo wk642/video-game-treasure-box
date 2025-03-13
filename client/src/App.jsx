@@ -27,7 +27,9 @@ function App() {
         <h1 className="text-8xl text-center font-bold underline text-orange-500">TREASURE BOX</h1>
       </div>
 
-      <GameCards games={games} />
+      <GameCards 
+        games={games}
+        setGames={setGames} />
     </>
   )
 }

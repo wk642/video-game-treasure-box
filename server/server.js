@@ -23,6 +23,17 @@ app.get('/games', async (req, res) => {
   }
 });
 
+// delete - by game id
+app.delete('/games/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await pool.query('DELETE FROM games WHERE id = $1', [id]);
+    res.json({ message: 'Game is deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Unable to delete the game' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
