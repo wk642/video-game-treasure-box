@@ -21,6 +21,7 @@ function GameCards({ games, setGames }) {
       console.error('Error deleting game:', error);
     }
   };
+  //consider adding delete success message
 
   // handle add
   const handleAdd = async (newGame) => {
@@ -57,6 +58,7 @@ function GameCards({ games, setGames }) {
       console.error('Error toggling favorite:', error);
     }
   };
+  //consider adding favorite success message
 
   // handle selecting card and showing the details
   // card selected
