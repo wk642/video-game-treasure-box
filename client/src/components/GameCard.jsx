@@ -1,9 +1,12 @@
 import { MinusCircledIcon, Pencil1Icon, PlusCircledIcon, StarIcon, StarFilledIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 import AddGameForm from './AddGameForm';
+import GameDetails from './GameDetials';
 
 function GameCards({ games, setGames }) {
   const [addGameFormVisibility, setAddGameFormVisibility] = useState(false);
+  const [gameUserClicked, setGameUserClicked] = useState(null); // State for selected game
+
 
   // handle delete
   const handleDelete = async (id) => {
@@ -55,6 +58,16 @@ function GameCards({ games, setGames }) {
     }
   };
 
+  // handle selecting card and showing the details
+  // card selected
+  const handleSelectedGameCard = (game) => {
+    setGameUserClicked(game);
+  };
+  // closing out the game detail
+  const closeGameDetails = () => {
+    setGameUserClicked(null);
+  };
+
   return (
     <div className="relative">
       <div className="mt-8 ml-18 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-4 ">
@@ -62,6 +75,7 @@ function GameCards({ games, setGames }) {
           <div
             key={game.id}
             className="relative border bg-sky-200 rounded-lg shadow-white hover:shadow-2xl transition duration-400 ease-in-out p-4"
+            onClick={() => handleSelectedGameCard(game)}
           >
             {/* minus button for delete */}
             <button
@@ -132,6 +146,17 @@ function GameCards({ games, setGames }) {
       {/* Add Game Form Popup */}
       {addGameFormVisibility && (
         <AddGameForm addGameFormVisibility={() => setAddGameFormVisibility(false)} onSubmit={handleAdd} />
+      )}
+
+      {/* Card Details Popup */}
+      {gameUserClicked && (
+        <GameDetails
+        game={gameUserClicked}
+        closeGameDetails={closeGameDetails}
+        handleToggleFavorite={handleToggleFavorite}
+        handleDelete={handleDelete} 
+        // handleUpdate={handleUpdate}
+       />
       )}
     </div>
   );

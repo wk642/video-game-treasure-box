@@ -45,7 +45,6 @@ function AddGameForm({ addGameFormVisibility, onSubmit }) {
   return (
     <div className="fixed inset-0 bg-black flex justify-center items-center w-full">
       <div className="bg-sky-200 p-20 rounded-lg shadow-lg relative">
-        close button
         <button className="absolute top-2 right-2 text-orange-500 hover:text-orange-200 w-10 h-10" onClick={addGameFormVisibility}>
           <Cross1Icon className="w-10 h-10" />
         </button>
@@ -88,7 +87,7 @@ function AddGameForm({ addGameFormVisibility, onSubmit }) {
             <label className="block text-gray-700 text-sm font-bold mb-2">Release Year</label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline focus:border-orange-500 hover:border-white"
-              type="text"
+              type="number"
               name="release"
               value={addFormData.release}
               onChange={handleChangeAddGameForm}
