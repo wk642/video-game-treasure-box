@@ -23,7 +23,7 @@
 3. To run this project concurrently:  
 ` npm run dev `
 If you onlly run npm run dev, there will be no games initally in your database. To add a couple of games with my template use 
-` npm run seed ` (This step should I only be used when initiallizing the app or when there is none in there and you want to add something. Or else you will get the repeated five games over and over again)
+` npm run seed ` (This step should only be used when initiallizing the app or when there is none in there and you want to add something. Or else you will get the repeated five games over and over again)
 To run just the front end:
 ` npm run client `
 To  run just the back end:
