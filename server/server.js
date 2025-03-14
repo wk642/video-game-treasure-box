@@ -54,6 +54,21 @@ app.post('/games', async (req, res) => {
   }
 });
 
+// update fav status star or no star
+app.put('/games/:id/favorite', async (req, res) => {
+  try {
+    // need the id and fav boolean
+    const { id } = req.params;
+    const { fav } = req.body;
+
+    const result = await pool.query(
+      'UPDATE games SET fav = $1 WHERE id = $2 RETURNING *', [fav, id]
+    );
+    res.json(result.rows[0]);
+  } catch (error) {
+    res.status(500).json({ message: 'Unable to toggle favorite', error: error.message });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

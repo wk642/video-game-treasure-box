@@ -1,4 +1,4 @@
-import { MinusCircledIcon, Pencil1Icon, PlusCircledIcon } from '@radix-ui/react-icons';
+import { MinusCircledIcon, Pencil1Icon, PlusCircledIcon, StarIcon, StarFilledIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 import AddGameForm from './AddGameForm';
 
@@ -38,54 +38,81 @@ function GameCards({ games, setGames }) {
     }
   };
 
+  // handle fav icon which is also a put
+  const handleToggleFavorite = async (game) => {
+    try {
+      const updateFav = await fetch(`http://localhost:5000/games/${game.id}/favorite`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ fav: !game.fav }),
+      }).then(res => res.json());
+
+      setGames(games.map(game => game.id === updateFav.id ? updateFav : game));
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
+    }
+  };
+
   return (
     <div className="relative">
       <div className="mt-8 ml-18 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-4 ">
         {games.map((game) => (
           <div
             key={game.id}
-            className="relative border bg-sky-900 rounded-lg shadow-white hover:shadow-2xl transition duration-400 ease-in-out p-4"
+            className="relative border bg-sky-200 rounded-lg shadow-white hover:shadow-2xl transition duration-400 ease-in-out p-4"
           >
             {/* minus button for delete */}
             <button
-              className="absolute top-2 left-2 bg-orange-500 hover:bg-orange-300 text-white font-bold p-2 rounded-full w-8 h-8 flex items-center justify-center"
+              className="absolute top-2 left-2 text-white font-bold p-2 rounded-full w-8 h-8 flex items-center justify-center"
               onClick={() => handleDelete(game.id)}
             >
-              <MinusCircledIcon />
+              <MinusCircledIcon className="stroke-orange-500 hover:stroke-orange-200"/>
             </button>
 
             {/* pencil button for update information */}
             <button
-              className="absolute top-2 left-11 bg-orange-500 hover:bg-orange-300 text-white font-bold p-2 rounded-full w-8 h-8 flex items-center justify-center"
+              className="absolute top-2 left-11 text-white font-bold p-2 rounded-full w-8 h-8 flex items-center justify-center"
               onClick={() => handleUpdate(game.id)}
             >
-              <Pencil1Icon />
+              <Pencil1Icon className="stroke-orange-500 hover:stroke-orange-200"/>
             </button>
+
+            {/* start button to update fav or not fav */}
+            <button
+              className="absolute top-2 right-2 text-white font-bold p-2 rounded-full w-8 h-8 flex items-center justify-center"
+              onClick={() => handleToggleFavorite(game)}
+            >
+              {/* targle between fav vs not fav */}
+              {game.fav ? <StarFilledIcon className="text-orange-500"/> : <StarIcon className="stroke-orange-500"/>}
+            </button>
+
 
             {/* Game Information */}
             <div className="mt-6">
-              <h2 className="text-white-500 text-2xl font-bold mt-9 text-center">{game.title.toUpperCase()}</h2>
+              <h2 className="text-orange-500 text-2xl font-bold mt-9 text-center">{game.title.toUpperCase()}</h2>
               <p className="text-orange-500">
-                <span className="text-white text-xl font-bold mb-3 underline">
+                <span className="text-orange-500 text-xl font-bold mb-3 underline">
                   Platform:
                 </span>
-                <span className="p-4">
+                <span className="p-4 text-sky-700">
                   {game.platform}
                 </span>
               </p>
               <p className="text-orange-500">
-                <span className="text-white text-xl font-bold mb-1 underline">
+                <span className="text-orange-500 text-xl font-bold mb-3 underline">
                   Genre:
                 </span>
-                <span className="p-4">
+                <span className="p-4 text-sky-700">
                   {game.genre}
                 </span>
               </p>
               <p className="text-orange-500">
-                <span className="text-white text-xl font-bold mb-3 underline">
+                <span className="text-orange-500 text-xl font-bold mb-3 underline">
                   Year:
                 </span>
-                <span className="p-4">
+                <span className="p-4 text-sky-700">
                   {game.release}
                 </span>
               </p>
